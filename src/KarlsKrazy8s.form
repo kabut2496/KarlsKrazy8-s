@@ -147,11 +147,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="Playercard1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="You Don&apos;t have this Card"/>
+            <Property name="text" type="java.lang.String" value="You don&apos;t have this Card"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="73" width="127" height="-1"/>
+              <AbsoluteConstraints x="10" y="73" width="140" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -170,7 +170,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="Playercard2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="You Don&apos;t have this Card"/>
+            <Property name="text" type="java.lang.String" value="You don&apos;t have this Card"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -193,7 +193,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="Playercard3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="You Don&apos;t have this Card"/>
+            <Property name="text" type="java.lang.String" value="You don&apos;t have this Card"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -216,7 +216,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="Playercard4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="You Don&apos;t have this Card"/>
+            <Property name="text" type="java.lang.String" value="You don&apos;t have this Card"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -239,7 +239,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="Playercard5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="You Don&apos;t have this Card"/>
+            <Property name="text" type="java.lang.String" value="You don&apos;t have this Card"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -315,7 +315,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="Playercard6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="You Don&apos;t have this Card"/>
+            <Property name="text" type="java.lang.String" value="You don&apos;t have this Card"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -325,11 +325,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="Playercard7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="You Don&apos;t have this Card"/>
+            <Property name="text" type="java.lang.String" value="You don&apos;t have this Card"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="274" width="136" height="-1"/>
+              <AbsoluteConstraints x="10" y="270" width="136" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -348,24 +348,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="Playercard8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="You Don&apos;t have this Card"/>
+            <Property name="text" type="java.lang.String" value="You don&apos;t have this Card"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="10" y="300" width="136" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="PlayCard8">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Play card"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PlayCard8ActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="160" y="290" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -375,7 +362,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="280" y="60" width="80" height="-1"/>
+              <AbsoluteConstraints x="280" y="60" width="130" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -386,6 +373,42 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="320" y="250" width="110" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="NextPlayerTurn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Next"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NextPlayerTurnActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="260" y="160" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="PlayerCard8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Play card"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PlayerCard8ActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="160" y="290" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="WrongSuit">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Wrong suit"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="270" y="100" width="80" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

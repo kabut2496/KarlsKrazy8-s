@@ -17,6 +17,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         initComponents();
        NotUTurn.setVisible(false);
        NoPickUp.setVisible(false);
+       WrongSuit.setVisible(false);
        x1=0;
        x2=0;
        x3=0;
@@ -25,8 +26,13 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
        x6=0;
        x7=0;
        x8=0;
+       z=2;
+       y=0;
+       GameSuit=0;
     }
- int card1,card2,card3,card4,card5,card6,card7,card8,num,suit,num2,suit2,num3,suit3,num4,suit4,num5,suit5,suit6,num6,suit7,num7,num8,suit8,x1,x2,x3,x4,x5,x6,x7,x8,y;
+ int GameSuit,card1,card2,card3,card4,card5,card6,card7,card8,num,suit,num2,suit2,num3,suit3,num4,suit4,num5,suit5,suit6,num6,suit7,num7,num8,suit8,num9,suit9,playSuit,x1,x2,x3,x4,x5,x6,x7,x8,y,z;
+       
+
  
 
  /**
@@ -62,9 +68,11 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         Playercard7 = new javax.swing.JLabel();
         PlayCard7 = new javax.swing.JButton();
         Playercard8 = new javax.swing.JLabel();
-        PlayCard8 = new javax.swing.JButton();
         NotUTurn = new javax.swing.JLabel();
         NoPickUp = new javax.swing.JLabel();
+        NextPlayerTurn = new javax.swing.JButton();
+        PlayerCard8 = new javax.swing.JButton();
+        WrongSuit = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -101,8 +109,8 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         jLabel2.setText("Your Hand");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 51, -1, -1));
 
-        Playercard1.setText("You Don't have this Card");
-        jPanel1.add(Playercard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 73, 127, -1));
+        Playercard1.setText("You don't have this Card");
+        jPanel1.add(Playercard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 73, 140, -1));
 
         PlayCard1.setText("Play card");
         PlayCard1.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +120,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         });
         jPanel1.add(PlayCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 69, -1, -1));
 
-        Playercard2.setText("You Don't have this Card");
+        Playercard2.setText("You don't have this Card");
         jPanel1.add(Playercard2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 104, 141, -1));
 
         PlayCard2.setText("Play card");
@@ -123,7 +131,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         });
         jPanel1.add(PlayCard2, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 100, -1, -1));
 
-        Playercard3.setText("You Don't have this Card");
+        Playercard3.setText("You don't have this Card");
         jPanel1.add(Playercard3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 141, -1));
 
         PlayCard3.setText("Play card");
@@ -134,7 +142,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         });
         jPanel1.add(PlayCard3, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 136, -1, -1));
 
-        Playercard4.setText("You Don't have this Card");
+        Playercard4.setText("You don't have this Card");
         jPanel1.add(Playercard4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 169, -1, -1));
 
         PlayCard4.setText("Play card");
@@ -145,7 +153,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         });
         jPanel1.add(PlayCard4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
 
-        Playercard5.setText("You Don't have this Card");
+        Playercard5.setText("You don't have this Card");
         jPanel1.add(Playercard5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 204, 136, -1));
 
         PlayCard5.setText("Play card");
@@ -176,11 +184,11 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         });
         jPanel1.add(PlayCard6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
 
-        Playercard6.setText("You Don't have this Card");
+        Playercard6.setText("You don't have this Card");
         jPanel1.add(Playercard6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 239, 136, -1));
 
-        Playercard7.setText("You Don't have this Card");
-        jPanel1.add(Playercard7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 274, 136, -1));
+        Playercard7.setText("You don't have this Card");
+        jPanel1.add(Playercard7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 136, -1));
 
         PlayCard7.setText("Play card");
         PlayCard7.addActionListener(new java.awt.event.ActionListener() {
@@ -190,22 +198,33 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         });
         jPanel1.add(PlayCard7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
 
-        Playercard8.setText("You Don't have this Card");
+        Playercard8.setText("You don't have this Card");
         jPanel1.add(Playercard8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 136, -1));
 
-        PlayCard8.setText("Play card");
-        PlayCard8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PlayCard8ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(PlayCard8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
-
         NotUTurn.setText("Not your turn  ");
-        jPanel1.add(NotUTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 80, -1));
+        jPanel1.add(NotUTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 130, -1));
 
         NoPickUp.setText("You can't pick up ");
         jPanel1.add(NoPickUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 110, -1));
+
+        NextPlayerTurn.setText("Next");
+        NextPlayerTurn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NextPlayerTurnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(NextPlayerTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+
+        PlayerCard8.setText("Play card");
+        PlayerCard8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlayerCard8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PlayerCard8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
+
+        WrongSuit.setText("Wrong suit");
+        jPanel1.add(WrongSuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 80, -1));
 
         jMenu1.setText("File");
 
@@ -263,351 +282,472 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void PlayCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayCard2ActionPerformed
-        Playercard2.setText("you don't have this card");
-        
+       if(GameSuit==suit2){
+       if(z==2&&y==0){ 
+            Playercard2.setText("you don't have this card");
         if(num2==1&&suit2==1){
             CurentCard.setText("ace of Spades");
+            GameSuit=1;
         }
         if(num2==1&&suit2==2){
             CurentCard.setText("ace of Dimonds");
+            GameSuit=2;
         }
         if(num2==1&&suit2==3){
             CurentCard.setText("ace of Hearts");
+            GameSuit=3;
         }
         if(num2==2&&suit2==4){
             CurentCard.setText("ace of Clubs");
+            GameSuit=4;
         }
         
         if(num2==2&&suit2==1){
             CurentCard.setText("2 of Spades");
+            GameSuit=1;
         }
         if(num2==2&&suit2==2){
             CurentCard.setText("2 of Dimonds");
+            GameSuit=2;
         }
         if(num2==2&&suit2==3){
             CurentCard.setText("2 of Hearts");
+            GameSuit=3;
         }
         if(num2==2&&suit2==4){
             CurentCard.setText("2 of Clubs"); 
+            GameSuit=4;
         }
         
          if(num2==3&&suit2==1){
             CurentCard.setText("3 of Spades");
+            GameSuit=1;
         }
         if(num2==3&&suit2==2){
             CurentCard.setText("3 of Dimonds");
+            GameSuit=2;
         }
         if(num2==3&&suit2==3){
             CurentCard.setText("3 of Hearts");
+            GameSuit=3;
         }
         if(num2==3&&suit2==4){
             CurentCard.setText("3 of Clubs");
+            GameSuit=4;
         }
         
          if(num2==4&&suit2==1){
             CurentCard.setText("4 of Spades");
+            GameSuit=1;
         }
         if(num2==4&&suit2==2){
             CurentCard.setText("4 of Dimonds");
+            GameSuit=2;
         }
         if(num2==4&&suit2==3){
             CurentCard.setText("4 of Hearts");
+            GameSuit=3;
         }
         if(num2==4&&suit2==4){
             CurentCard.setText("4 of Clubs");
+            GameSuit=4;
         }
         
         if(num2==5&&suit2==1){
             CurentCard.setText("5 of Spades");
+            GameSuit=1;
         }
         if(num2==5&&suit2==2){
             CurentCard.setText("5 of Dimonds");
+            GameSuit=2;
         }
         if(num2==5&&suit2==3){
             CurentCard.setText("5 of Hearts");
+            GameSuit=3;
         }
         if(num2==5&&suit2==4){
             CurentCard.setText("5 of Clubs");
+            GameSuit=4;
         }
         
         if(num2==6&&suit2==1){
             CurentCard.setText("6 of Spades");
+            GameSuit=1;
         }
         if(num2==6&&suit2==2){
             CurentCard.setText("6 of Dimonds");
+            GameSuit=2;
         }
         if(num2==6&&suit2==3){
             CurentCard.setText("6 of Hearts");
+            GameSuit=3;
         }
         if(num2==6&&suit2==4){
             CurentCard.setText("6 of Clubs");
+            GameSuit=4;
         }
         
         if(num2==7&&suit2==1){
             CurentCard.setText("7 of Spades");
+            GameSuit=1;
         }
         if(num2==7&&suit2==2){
             CurentCard.setText("7 of Dimonds");
+            GameSuit=2;
         }
         if(num2==7&&suit2==3){
             CurentCard.setText("7 of Hearts");
+            GameSuit=3;
         }
         if(num2==7&&suit2==4){
             CurentCard.setText("7 of Clubs");
+            GameSuit=4;
         }
         
         if(num2==8&&suit2==1){
             CurentCard.setText("8 of Spades");
+            GameSuit=1;
         }
         if(num2==8&&suit2==2){
             CurentCard.setText("8 of Dimonds");
+            GameSuit=2;
         }
         if(num2==8&&suit2==3){
             CurentCard.setText("8 of Hearts");
+            GameSuit=3;
         }
         if(num2==8&&suit2==4){
             CurentCard.setText("8 of Clubs");
+            GameSuit=4;
         }
         
         if(num2==9&&suit2==1){
             CurentCard.setText("9 of Spades");
+            GameSuit=1;
         }
         if(num2==9&&suit2==2){
             CurentCard.setText("9 of Dimonds");
+            GameSuit=2;
         }
         if(num2==9&&suit2==3){
             CurentCard.setText("9 of Hearts");
+            GameSuit=3;
         }
         if(num2==9&&suit2==4){
             CurentCard.setText("9 of Clubs");
+            GameSuit=4;
         }
         
         if(num2==10&&suit2==1){
             CurentCard.setText("10 of Spades");
+            GameSuit=1;
         }
         if(num2==10&&suit2==2){
             CurentCard.setText("10 of Dimonds");
+            GameSuit=2;
         }
         if(num2==10&&suit2==3){
             CurentCard.setText("10 of Hearts");
+            GameSuit=3;
         }
         if(num2==10&&suit2==4){
             CurentCard.setText("10 of Clubs");
+            GameSuit=4;
         }
         
         if(num2==11&&suit2==1){
             CurentCard.setText("Jack of Spades");
+            GameSuit=1;
         }
         if(num2==11&&suit2==2){
             CurentCard.setText("Jack of Dimonds");
+            GameSuit=2;
         }
         if(num2==11&&suit2==3){
             CurentCard.setText("Jack of Hearts");
+            GameSuit=3;
         }
         if(num2==11&&suit2==4){
             CurentCard.setText("Jack of Clubs");
+            GameSuit=4;
         }
         
         if(num2==12&&suit2==1){
             CurentCard.setText("Queen of Spades");
+            GameSuit=1;
         }
         if(num2==12&&suit2==2){
             CurentCard.setText("Queen of Dimonds");
+            GameSuit=2;
         }
         if(num2==12&&suit2==3){
             CurentCard.setText("Queen of Hearts");
+            GameSuit=3;
         }
         if(num2==12&&suit2==4){
             CurentCard.setText("Queen of Clubs");
+            GameSuit=4;
         }
         
         if(num2==13&&suit2==1){
             CurentCard.setText("King of Spades");
+            GameSuit=1;
         }
         if(num2==13&&suit2==2){
             CurentCard.setText("King of Dimonds");
+            GameSuit=2;
         }
         if(num2==13&&suit2==3){
             CurentCard.setText("King of Hearts");
+            GameSuit=3;
         }
         if(num2==13&&suit2==4){
             CurentCard.setText("King of Clubs");
+            GameSuit=4;
         } 
+        NotUTurn.setText("it is Julia's turn");
+        z=1;
+       }
+       if(y!=0){
+           NotUTurn.setText("it is not your turn");
+       }
+       }
     }//GEN-LAST:event_PlayCard2ActionPerformed
 
     private void PlayCard5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayCard5ActionPerformed
-        Playercard5.setText("you don't have this card");
         
         x5=0;
-        
+        if(GameSuit==suit5){
+        if(z==2&&y==0){
+        Playercard5.setText("you don't have this card");
         if(num5==1&&suit5==1){
             CurentCard.setText("ace of Spades");
+            GameSuit=1;
         }
         if(num5==1&&suit5==2){
             CurentCard.setText("ace of Dimonds");
+            GameSuit=2;
         }
         if(num5==1&&suit5==3){
             CurentCard.setText("ace of Hearts");
+            GameSuit=3;
         }
         if(num5==2&&suit5==4){
             CurentCard.setText("ace of Clubs");
+            GameSuit=4;
         }
         
         if(num5==2&&suit5==1){
             CurentCard.setText("2 of Spades");
+            GameSuit=1;
         }
         if(num5==2&&suit5==2){
             CurentCard.setText("2 of Dimonds");
+            GameSuit=2;
         }
         if(num4==5&&suit5==3){
             CurentCard.setText("2 of Hearts");
+            GameSuit=3;
         }
         if(num4==5&&suit5==4){
             CurentCard.setText("2 of Clubs"); 
+            GameSuit=4;
         }
         
          if(num5==3&&suit5==1){
             CurentCard.setText("3 of Spades");
-        }
+            GameSuit=1;
+         }
         if(num5==3&&suit5==2){
             CurentCard.setText("3 of Dimonds");
+            GameSuit=2;
         }
         if(num5==3&&suit5==3){
             CurentCard.setText("3 of Hearts");
+            GameSuit=3;
         }
         if(num5==3&&suit5==4){
             CurentCard.setText("3 of Clubs");
+            GameSuit=4;
+            
         }
         
          if(num5==4&&suit5==1){
             CurentCard.setText("4 of Spades");
+            GameSuit=1;
         }
         if(num5==4&&suit5==2){
             CurentCard.setText("4 of Dimonds");
+            GameSuit=2;
         }
         if(num5==4&&suit5==3){
             CurentCard.setText("4 of Hearts");
+            GameSuit=3;
         }
         if(num5==3&&suit5==4){
             CurentCard.setText("4 of Clubs");
+            GameSuit=4;
         }
         
         if(num5==5&&suit5==1){
             CurentCard.setText("5 of Spades");
+            GameSuit=1;
         }
         if(num5==5&&suit5==2){
             CurentCard.setText("5 of Dimonds");
+            GameSuit=2;
         }
         if(num5==5&&suit5==3){
             CurentCard.setText("5 of Hearts");
+            GameSuit=3;
         }
         if(num5==5&&suit5==4){
             CurentCard.setText("5 of Clubs");
+            GameSuit=4;
         }
         
         if(num5==6&&suit5==1){
             CurentCard.setText("6 of Spades");
+            GameSuit=1;
         }
         if(num5==6&&suit5==2){
             CurentCard.setText("6 of Dimonds");
+            GameSuit=2;
         }
         if(num5==6&&suit5==3){
             CurentCard.setText("6 of Hearts");
+            GameSuit=3;
         }
         if(num5==6&&suit5==4){
             CurentCard.setText("6 of Clubs");
+            GameSuit=4;
         }
         
         if(num5==7&&suit5==1){
             CurentCard.setText("7 of Spades");
+            GameSuit=1;
         }
         if(num4==5&&suit5==2){
             CurentCard.setText("7 of Dimonds");
+            GameSuit=2;
         }
         if(num4==5&&suit5==3){
             CurentCard.setText("7 of Hearts");
+            GameSuit=3;
         }
         if(num5==7&&suit5==4){
             CurentCard.setText("7 of Clubs");
+            GameSuit=4;
         }
         
         if(num5==8&&suit5==1){
             CurentCard.setText("8 of Spades");
+            GameSuit=1;
         }
         if(num4==5&&suit5==2){
             CurentCard.setText("8 of Dimonds");
+            GameSuit=2;
         }
         if(num5==8&&suit5==3){
             CurentCard.setText("8 of Hearts");
+            GameSuit=3;
         }
         if(num5==8&&suit5==4){
             CurentCard.setText("8 of Clubs");
+            GameSuit=4;
         }
         
         if(num5==9&&suit5==1){
             CurentCard.setText("9 of Spades");
+            GameSuit=1;
         }
         if(num5==9&&suit5==2){
             CurentCard.setText("9 of Dimonds");
+            GameSuit=2;
         }
         if(num5==9&&suit5==3){
             CurentCard.setText("9 of Hearts");
+            GameSuit=3;
         }
         if(num5==9&&suit5==4){
             CurentCard.setText("9 of Clubs");
+            GameSuit=4;
         }
         
         if(num5==10&&suit5==1){
             CurentCard.setText("10 of Spades");
+            GameSuit=1;
         }
         if(num5==10&&suit5==2){
             CurentCard.setText("10 of Dimonds");
+            GameSuit=2;
         }
         if(num5==10&&suit5==3){
             CurentCard.setText("10 of Hearts");
+            GameSuit=3;
         }
         if(num5==10&&suit5==4){
             CurentCard.setText("10 of Clubs");
+            GameSuit=4;
         }
         
         if(num5==11&&suit5==1){
             CurentCard.setText("Jack of Spades");
+            GameSuit=1;
         }
         if(num5==11&&suit5==2){
             CurentCard.setText("Jack of Dimonds");
+            GameSuit=2;
         }
         if(num5==11&&suit5==3){
             CurentCard.setText("Jack of Hearts");
+            GameSuit=3;
         }
         if(num5==11&&suit5==4){
             CurentCard.setText("Jack of Clubs");
+            GameSuit=4;
         }
         
         if(num5==12&&suit5==1){
             CurentCard.setText("Queen of Spades");
+            GameSuit=1;
         }
         if(num5==12&&suit5==2){
             CurentCard.setText("Queen of Dimonds");
+            GameSuit=2;
         }
         if(num5==12&&suit5==3){
             CurentCard.setText("Queen of Hearts");
+            GameSuit=3;
         }
         if(num5==12&&suit5==4){
             CurentCard.setText("Queen of Clubs");
+            GameSuit=4;
         }
         
         if(num5==13&&suit5==1){
             CurentCard.setText("King of Spades");
+            GameSuit=1;
         }
         if(num5==13&&suit5==2){
             CurentCard.setText("King of Dimonds");
+            GameSuit=2;
         }
         if(num5==13&&suit5==3){
             CurentCard.setText("King of Hearts");
+            GameSuit=3;
         }
         if(num5==13&&suit5==4){
             CurentCard.setText("King of Clubs");
+            GameSuit=4;
         }
+        z=1;
+        NotUTurn.setText("it is Julia's turn");
+        }
+        }
+        if(y!=0){
+           NotUTurn.setText("it is not your turn");
+       }
     }//GEN-LAST:event_PlayCard5ActionPerformed
 
     private void PickUpCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PickUpCardActionPerformed
@@ -623,7 +763,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         // no more pick up
         if(x2==1&&x1==1&&x3==1&&x4==1&&x5==1&&x6==1&&x7==1&&x8==1){
             NoPickUp.setVisible(true);
-        }
+        } 
         // pick up card 8
             if(x2==1&&x1==1&&x3==1&&x4==1&&x5==1&&x6==1&&x7==1&&x8==0){
         num8=(int)(Math.random()*13+1);
@@ -798,6 +938,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         if(num8==13&&suit8==4){
             Playercard8.setText("King of Clubs");
         }
+        z=1;
         }
         
          //pick up card 7
@@ -974,6 +1115,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         if(num7==13&&suit7==4){
             Playercard7.setText("King of Clubs");
         }
+        z=1;
         }
         //pick up card 6
           if(x2==1&&x1==1&&x3==1&&x4==1&&x5==1&&x6==0&&x7==0&&x8==0){
@@ -1149,6 +1291,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         if(num6==13&&suit6==4){
             Playercard6.setText("King of Clubs");
         }
+        z=1;
         }
         // pick up card 5
         
@@ -1326,6 +1469,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         if(num5==13&&suit5==4){
             Playercard5.setText("King of Clubs");
         }
+        z=1;
         }
         //pick up card 4
         if (x1==1&&x2==1&&x3==1&&x4==0&&x5==0&&x6==0&&x7==0&&x8==0){
@@ -1500,6 +1644,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         if(num4==13&&suit4==4){
             Playercard4.setText("King of Clubs");
         }
+        z=1;
         }
         //pick up card 3
         if(x1==1&&x2==1&&x3==0&&x4==0&&x5==0&&x6==0&&x7==0&&x8==0){
@@ -1675,6 +1820,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         if(num2==13&&suit2==4){
             Playercard3.setText("King of Clubs");
         }
+        z=1;
         }
   
         //pick up card 2
@@ -1852,6 +1998,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         if(num2==13&&suit2==4){
             Playercard2.setText("King of Clubs");
         }
+        z=1;
         }
     }//GEN-LAST:event_PickUpCardActionPerformed
 
@@ -1861,175 +2008,237 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
 
     private void PlayCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayCard1ActionPerformed
         Playercard1.setText("you don't have this card");
-        
+        System.out.println(z);
+        if(GameSuit==suit){
+        if(z==2&&y==0){
+             Playercard1.setText("you don't have this card");
         if(num==1&&suit==1){
             CurentCard.setText("ace of Spades");
+            GameSuit=1;
         }
         if(num==1&&suit==2){
             CurentCard.setText("ace of Dimonds");
+            GameSuit=2;
         }
         if(num==1&&suit==3){
             CurentCard.setText("ace of Hearts");
+            GameSuit=3;
         }
         if(num==2&&suit==4){
             CurentCard.setText("ace of Clubs");
+             GameSuit=4;
         }
         
         if(num==2&&suit==1){
             CurentCard.setText("2 of Spades");
+            GameSuit=1;
         }
         if(num==2&&suit==2){
             CurentCard.setText("2 of Dimonds");
+            GameSuit=2;
         }
         if(num==2&&suit==3){
             CurentCard.setText("2 of Hearts");
+             GameSuit=3;
         }
         if(num==2&&suit==4){
             CurentCard.setText("2 of Clubs"); 
+            GameSuit=4;
         }
         
          if(num==3&&suit==1){
             CurentCard.setText("3 of Spades");
+            GameSuit=1;
         }
         if(num==3&&suit==2){
             CurentCard.setText("3 of Dimonds");
+            GameSuit=2;
         }
         if(num==3&&suit==3){
             CurentCard.setText("3 of Hearts");
+             GameSuit=3;
         }
         if(num==3&&suit==4){
             CurentCard.setText("3 of Clubs");
+            GameSuit=4;
         }
         
          if(num==4&&suit==1){
             CurentCard.setText("4 of Spades");
+            GameSuit=1;
         }
         if(num==4&&suit==2){
             CurentCard.setText("4 of Dimonds");
+            GameSuit=2;
         }
         if(num==4&&suit==3){
             CurentCard.setText("4 of Hearts");
+             GameSuit=3;
         }
         if(num==4&&suit==4){
             CurentCard.setText("4 of Clubs");
+            GameSuit=4;
         }
         
         if(num==5&&suit==1){
             CurentCard.setText("5 of Spades");
+            GameSuit=1;
         }
         if(num==5&&suit==2){
             CurentCard.setText("5 of Dimonds");
+            GameSuit=2;
         }
         if(num==5&&suit==3){
             CurentCard.setText("5 of Hearts");
+             GameSuit=3;
         }
         if(num==5&&suit==4){
             CurentCard.setText("5 of Clubs");
+            GameSuit=4;
         }
         
         if(num==6&&suit==1){
             CurentCard.setText("6 of Spades");
+            GameSuit=1;  
         }
         if(num==6&&suit==2){
             CurentCard.setText("6 of Dimonds");
+            GameSuit=2;
         }
         if(num==6&&suit==3){
             CurentCard.setText("6 of Hearts");
+             GameSuit=3;
         }
         if(num==6&&suit==4){
             CurentCard.setText("6 of Clubs");
+            GameSuit=4;
         }
         
         if(num==7&&suit==1){
             CurentCard.setText("7 of Spades");
+            GameSuit=1;
         }
         if(num==7&&suit==2){
             CurentCard.setText("7 of Dimonds");
+            GameSuit=2;
         }
         if(num==7&&suit==3){
             CurentCard.setText("7 of Hearts");
+             GameSuit=3;
         }
         if(num==7&&suit==4){
             CurentCard.setText("7 of Clubs");
+            GameSuit=4;
         }
         
         if(num==8&&suit==1){
             CurentCard.setText("8 of Spades");
+            GameSuit=1;
         }
         if(num==8&&suit==2){
             CurentCard.setText("8 of Dimonds");
+            GameSuit=2;
         }
         if(num==8&&suit==3){
             CurentCard.setText("8 of Hearts");
+             GameSuit=3;
         }
         if(num==8&&suit==4){
             CurentCard.setText("8 of Clubs");
+            GameSuit=4;
         }
         
         if(num==9&&suit==1){
             CurentCard.setText("9 of Spades");
+            GameSuit=1;
         }
         if(num==9&&suit==2){
             CurentCard.setText("9 of Dimonds");
+            GameSuit=2;
         }
         if(num==9&&suit==3){
             CurentCard.setText("9 of Hearts");
+             GameSuit=3;
         }
         if(num==9&&suit==4){
             CurentCard.setText("9 of Clubs");
+            GameSuit=4;
         }
         
         if(num==10&&suit==1){
             CurentCard.setText("10 of Spades");
+            GameSuit=1;
         }
         if(num==10&&suit==2){
             CurentCard.setText("10 of Dimonds");
+            GameSuit=2;
         }
         if(num==10&&suit==3){
             CurentCard.setText("10 of Hearts");
+             GameSuit=3;
         }
         if(num==10&&suit==4){
             CurentCard.setText("10 of Clubs");
+            GameSuit=4;
         }
         
         if(num==11&&suit==1){
             CurentCard.setText("Jack of Spades");
+            GameSuit=1;
         }
         if(num==11&&suit==2){
             CurentCard.setText("Jack of Dimonds");
+            GameSuit=2;
         }
         if(num==11&&suit==3){
             CurentCard.setText("Jack of Hearts");
+             GameSuit=3;
         }
         if(num==11&&suit==4){
             CurentCard.setText("Jack of Clubs");
+            GameSuit=4;
         }
         
         if(num==12&&suit==1){
             CurentCard.setText("Queen of Spades");
+            GameSuit=1;
         }
         if(num==12&&suit==2){
             CurentCard.setText("Queen of Dimonds");
+            GameSuit=2;
         }
         if(num==12&&suit==3){
             CurentCard.setText("Queen of Hearts");
+             GameSuit=3;
         }
         if(num==12&&suit==4){
             CurentCard.setText("Queen of Clubs");
+            GameSuit=4;
         }
         
         if(num==13&&suit==1){
             CurentCard.setText("King of Spades");
+            GameSuit=1;
         }
         if(num==13&&suit==2){
             CurentCard.setText("King of Dimonds");
+            GameSuit=2;
         }
         if(num==13&&suit==3){
             CurentCard.setText("King of Hearts");
+             GameSuit=3;
         }
         if(num==13&&suit==4){
             CurentCard.setText("King of Clubs");
+             GameSuit=4;
         } 
+        z=1;
+        NotUTurn.setText("it is Julia's turn");
+        }
+        if(y!=0){
+           NotUTurn.setText("it is not your turn");
+       }
+        }
     }//GEN-LAST:event_PlayCard1ActionPerformed
 
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
@@ -2050,6 +2259,12 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         suit4=(int)(Math.random()*4+1);
         x4=1;
         
+        num9=(int)(Math.random()*13+1);
+        suit9=(int)(Math.random()*4+1);
+        
+        NotUTurn.setVisible(true);
+        NotUTurn.setText("it is your turn");
+        
         Playercard5.setText("You don't have this card");
         x5=0;
         
@@ -2061,7 +2276,229 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         
         Playercard8.setText("You don't have this card");
         x8=0;
+        // curant card
+        if(num9==1&&suit9==1){
+            CurentCard.setText("ace of Spades");
+            GameSuit=1;
+        }
+        if(num9==1&&suit9==2){
+            CurentCard.setText("ace of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==1&&suit9==3){
+            CurentCard.setText("ace of Hearts");
+            GameSuit=3;
+        }
+        if(num9==2&&suit9==4){
+            CurentCard.setText("ace of Clubs");
+            GameSuit=4;
+        }
         
+        if(num9==2&&suit9==1){
+            CurentCard.setText("2 of Spades");
+            GameSuit=1;
+        }
+        if(num9==2&&suit9==2){
+            CurentCard.setText("2 of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==2&&suit9==3){
+            CurentCard.setText("2 of Hearts");
+            GameSuit=3;
+        }
+        if(num9==2&&suit9==4){
+            CurentCard.setText("2 of Clubs"); 
+            GameSuit=4;
+        }
+        
+         if(num9==3&&suit9==1){
+            CurentCard.setText("3 of Spades");
+            GameSuit=1;
+        }
+        if(num9==3&&suit9==2){
+            CurentCard.setText("3 of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==3&&suit9==3){
+            CurentCard.setText("3 of Hearts");
+            GameSuit=3;
+        }
+        if(num9==3&&suit9==4){
+            CurentCard.setText("3 of Clubs");
+            GameSuit=4;
+        }
+        
+         if(num9==4&&suit9==1){
+            CurentCard.setText("4 of Spades");
+            GameSuit=1;
+        }
+        if(num9==4&&suit9==2){
+            CurentCard.setText("4 of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==4&&suit9==3){
+            CurentCard.setText("4 of Hearts");
+            GameSuit=3;
+        }
+        if(num9==4&&suit9==4){
+            CurentCard.setText("4 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num9==5&&suit9==1){
+            CurentCard.setText("5 of Spades");
+            GameSuit=1;
+        }
+        if(num9==5&&suit9==2){
+            CurentCard.setText("5 of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==5&&suit9==3){
+            CurentCard.setText("5 of Hearts");
+            GameSuit=3;
+        }
+        if(num9==5&&suit9==4){
+            CurentCard.setText("5 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num9==6&&suit9==1){
+            CurentCard.setText("6 of Spades");
+            GameSuit=1;
+        }
+        if(num9==6&&suit9==2){
+            CurentCard.setText("6 of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==6&&suit9==3){
+            CurentCard.setText("6 of Hearts");
+            GameSuit=3;
+        }
+        if(num9==6&&suit9==4){
+            CurentCard.setText("6 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num9==7&&suit9==1){
+            CurentCard.setText("7 of Spades");
+            GameSuit=1;
+        }
+        if(num9==7&&suit9==2){
+            CurentCard.setText("7 of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==7&&suit9==3){
+            CurentCard.setText("7 of Hearts");
+            GameSuit=3;
+        }
+        if(num9==7&&suit9==4){
+            CurentCard.setText("7 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num9==8&&suit9==1){
+            CurentCard.setText("8 of Spades");
+            GameSuit=1;
+        }
+        if(num9==8&&suit9==2){
+            CurentCard.setText("8 of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==8&&suit9==3){
+            CurentCard.setText("8 of Hearts");
+            GameSuit=3;
+        }
+        if(num9==8&&suit9==4){
+            CurentCard.setText("8 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num9==9&&suit9==1){
+            CurentCard.setText("9 of Spades");
+            GameSuit=1;
+        }
+        if(num9==9&&suit9==2){
+            CurentCard.setText("9 of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==9&&suit9==3){
+            CurentCard.setText("9 of Hearts");
+            GameSuit=3;
+        }
+        if(num9==9&&suit9==4){
+            CurentCard.setText("9 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num9==10&&suit9==1){
+            CurentCard.setText("10 of Spades");
+            GameSuit=1;
+        }
+        if(num9==10&&suit9==2){
+            CurentCard.setText("10 of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==10&&suit9==3){
+            CurentCard.setText("10 of Hearts");
+            GameSuit=3;
+        }
+        if(num9==10&&suit9==4){
+            CurentCard.setText("10 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num9==11&&suit9==1){
+            CurentCard.setText("Jack of Spades");
+            GameSuit=1;
+        }
+        if(num9==11&&suit9==2){
+            CurentCard.setText("Jack of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==11&&suit9==3){
+            CurentCard.setText("Jack of Hearts");
+            GameSuit=3;
+        }
+        if(num9==11&&suit9==4){
+            CurentCard.setText("Jack of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num9==12&&suit9==1){
+            CurentCard.setText("Queen of Spades");
+            GameSuit=1;
+        }
+        if(num9==12&&suit9==2){
+            CurentCard.setText("Queen of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==12&&suit9==3){
+            CurentCard.setText("Queen of Hearts");
+            GameSuit=3;
+        }
+        if(num9==12&&suit9==4){
+            CurentCard.setText("Queen of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num9==13&&suit9==1){
+            CurentCard.setText("King of Spades");
+            GameSuit=1;
+        }
+        if(num9==13&&suit9==2){
+            CurentCard.setText("King of Dimonds");
+            GameSuit=2;
+        }
+        if(num9==13&&suit9==3){
+            CurentCard.setText("King of Hearts");
+            GameSuit=3;
+        }
+        if(num9==13&&suit9==4){
+            CurentCard.setText("King of Clubs");
+            GameSuit=4;
+        }
+        
+        // first card deal
         if(num==1&&suit==1){
             Playercard1.setText("ace of Spades");
         }
@@ -2746,710 +3183,1132 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
     }//GEN-LAST:event_NewGameActionPerformed
 
     private void PlayCard6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayCard6ActionPerformed
-        Playercard6.setText("You don't have this card");
+        
         
         x6=0;
-        
+        if(GameSuit==suit6){
+        if(z==2&&y==0){
+        Playercard6.setText("You don't have this card");
         if(num6==1&&suit6==1){
             CurentCard.setText("ace of Spades");
+            GameSuit=1;
         }
         if(num6==1&&suit6==2){
             CurentCard.setText("ace of Dimonds");
+            GameSuit=2;
         }
         if(num6==1&&suit6==3){
             CurentCard.setText("ace of Hearts");
+            GameSuit=3;
         }
         if(num6==2&&suit6==4){
             CurentCard.setText("ace of Clubs");
+            GameSuit=4;
         }
         
         if(num6==2&&suit6==1){
             CurentCard.setText("2 of Spades");
+            GameSuit=1;
         }
         if(num6==2&&suit6==2){
             CurentCard.setText("2 of Dimonds");
+            GameSuit=2;
         }
         if(num6==2&&suit6==3){
             CurentCard.setText("2 of Hearts");
+            GameSuit=3;
         }
         if(num6==2&&suit6==4){
             CurentCard.setText("2 of Clubs"); 
+            GameSuit=4;
         }
         
          if(num6==3&&suit6==1){
             CurentCard.setText("3 of Spades");
+            GameSuit=1;
         }
         if(num6==3&&suit6==2){
             CurentCard.setText("3 of Dimonds");
+            GameSuit=2;
         }
         if(num6==3&&suit6==3){
             CurentCard.setText("3 of Hearts");
+            GameSuit=3;
         }
         if(num6==3&&suit6==4){
             CurentCard.setText("3 of Clubs");
+            GameSuit=4;
         }
         
          if(num6==4&&suit6==1){
             CurentCard.setText("4 of Spades");
+            GameSuit=1;
         }
         if(num6==4&&suit6==2){
             CurentCard.setText("4 of Dimonds");
+            GameSuit=2;
         }
         if(num6==4&&suit6==3){
             CurentCard.setText("4 of Hearts");
+            GameSuit=3;
         }
         if(num6==4&&suit6==4){
             CurentCard.setText("4 of Clubs");
+            GameSuit=4;
         }
         
         if(num6==5&&suit6==1){
             CurentCard.setText("5 of Spades");
+            GameSuit=1;
         }
         if(num6==5&&suit6==2){
             CurentCard.setText("5 of Dimonds");
+            GameSuit=2;
         }
         if(num6==5&&suit6==3){
             CurentCard.setText("5 of Hearts");
+            GameSuit=3;
         }
         if(num6==5&&suit6==4){
             CurentCard.setText("5 of Clubs");
+            GameSuit=4;
         }
         
         if(num6==6&&suit6==1){
             CurentCard.setText("6 of Spades");
+            GameSuit=1;
         }
         if(num6==6&&suit6==2){
             CurentCard.setText("6 of Dimonds");
+            GameSuit=2;
         }
         if(num6==6&&suit6==3){
             CurentCard.setText("6 of Hearts");
+            GameSuit=3;
         }
         if(num6==6&&suit6==4){
             CurentCard.setText("6 of Clubs");
+            GameSuit=4;
         }
         
         if(num6==7&&suit6==1){
             CurentCard.setText("7 of Spades");
+            GameSuit=1;
         }
         if(num6==7&&suit6==2){
             CurentCard.setText("7 of Dimonds");
+            GameSuit=2;
         }
         if(num6==7&&suit6==3){
             CurentCard.setText("7 of Hearts");
+            GameSuit=3;
         }
         if(num6==7&&suit6==4){
             CurentCard.setText("7 of Clubs");
+            GameSuit=4;
         }
         
         if(num6==8&&suit6==1){
             CurentCard.setText("8 of Spades");
+            GameSuit=1;
         }
         if(num6==8&&suit6==2){
             CurentCard.setText("8 of Dimonds");
+            GameSuit=2;
         }
         if(num6==8&&suit6==3){
             CurentCard.setText("8 of Hearts");
+            GameSuit=3;
         }
         if(num6==8&&suit6==4){
             CurentCard.setText("8 of Clubs");
+            GameSuit=4;
         }
         
         if(num6==9&&suit6==1){
             CurentCard.setText("9 of Spades");
+            GameSuit=1;
         }
         if(num6==9&&suit6==2){
             CurentCard.setText("9 of Dimonds");
+            GameSuit=2;
         }
         if(num6==9&&suit6==3){
             CurentCard.setText("9 of Hearts");
+            GameSuit=3;
         }
         if(num6==9&&suit6==4){
             CurentCard.setText("9 of Clubs");
+            GameSuit=4;
         }
         
         if(num6==10&&suit6==1){
             CurentCard.setText("10 of Spades");
+            GameSuit=1;
         }
         if(num6==10&&suit6==2){
             CurentCard.setText("10 of Dimonds");
+            GameSuit=2;
         }
         if(num6==10&&suit6==3){
             CurentCard.setText("10 of Hearts");
+            GameSuit=3;
         }
         if(num6==10&&suit6==4){
             CurentCard.setText("10 of Clubs");
+            GameSuit=4;
         }
         
         if(num6==11&&suit6==1){
             CurentCard.setText("Jack of Spades");
+            GameSuit=1;
         }
         if(num6==11&&suit6==2){
             CurentCard.setText("Jack of Dimonds");
+            GameSuit=2;
         }
         if(num6==11&&suit6==3){
             CurentCard.setText("Jack of Hearts");
+            GameSuit=3;
         }
         if(num6==11&&suit6==4){
             CurentCard.setText("Jack of Clubs");
+            GameSuit=4;
         }
         
         if(num6==12&&suit6==1){
             CurentCard.setText("Queen of Spades");
+            GameSuit=1;
         }
         if(num6==12&&suit6==2){
             CurentCard.setText("Queen of Dimonds");
+            GameSuit=2;
         }
         if(num6==12&&suit6==3){
             CurentCard.setText("Queen of Hearts");
+            GameSuit=3;
         }
         if(num6==12&&suit6==4){
             CurentCard.setText("Queen of Clubs");
+            GameSuit=4;
         }
         
         if(num6==13&&suit6==1){
             CurentCard.setText("King of Spades");
+            GameSuit=1;
         }
         if(num6==13&&suit6==2){
             CurentCard.setText("King of Dimonds");
+            GameSuit=2;
         }
         if(num6==13&&suit6==3){
             CurentCard.setText("King of Hearts");
+            GameSuit=3;
         }
         if(num6==13&&suit6==4){
             CurentCard.setText("King of Clubs");
+            GameSuit=4;
+        }
+        NotUTurn.setText("it is Julia's turn");
+        z=1;
+        }
+        if(y!=0){
+           NotUTurn.setText("it is not your turn");
+        }
         }
     }//GEN-LAST:event_PlayCard6ActionPerformed
 
     private void PlayCard7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayCard7ActionPerformed
-     Playercard7.setText("You don't have this card");
+
      
      x7=0;
-        
+     if(GameSuit==suit7){
+        if(z==2&&y==0){
+        Playercard7.setText("You don't have this card");
         if(num7==1&&suit7==1){
             CurentCard.setText("ace of Spades");
+            GameSuit=1;
         }
         if(num7==1&&suit7==2){
             CurentCard.setText("ace of Dimonds");
+            GameSuit=2;
         }
         if(num7==1&&suit7==3){
             CurentCard.setText("ace of Hearts");
+            GameSuit=3;
         }
         if(num7==2&&suit7==4){
             CurentCard.setText("ace of Clubs");
+            GameSuit=4;
         }
         
         if(num7==2&&suit7==1){
             CurentCard.setText("2 of Spades");
+            GameSuit=1;
         }
         if(num7==2&&suit7==2){
             CurentCard.setText("2 of Dimonds");
+            GameSuit=2;
         }
         if(num7==2&&suit7==3){
             CurentCard.setText("2 of Hearts");
+            GameSuit=3;
         }
         if(num7==2&&suit7==4){
-            CurentCard.setText("2 of Clubs"); 
+            CurentCard.setText("2 of Clubs");
+            GameSuit=4;
         }
         
          if(num7==3&&suit7==1){
             CurentCard.setText("3 of Spades");
+            GameSuit=1;
         }
         if(num7==3&&suit7==2){
             CurentCard.setText("3 of Dimonds");
+            GameSuit=2;
         }
         if(num7==3&&suit7==3){
             CurentCard.setText("3 of Hearts");
+            GameSuit=3;
         }
         if(num7==3&&suit7==4){
             CurentCard.setText("3 of Clubs");
+            GameSuit=4;
         }
         
          if(num7==4&&suit7==1){
             CurentCard.setText("4 of Spades");
+            GameSuit=1;
         }
         if(num7==4&&suit7==2){
             CurentCard.setText("4 of Dimonds");
+            GameSuit=2;
         }
         if(num7==4&&suit7==3){
             CurentCard.setText("4 of Hearts");
+            GameSuit=3;
         }
         if(num7==4&&suit7==4){
             CurentCard.setText("4 of Clubs");
+            GameSuit=4;
         }
         
         if(num7==5&&suit7==1){
             CurentCard.setText("5 of Spades");
+            GameSuit=1;
         }
         if(num7==5&&suit7==2){
             CurentCard.setText("5 of Dimonds");
+            GameSuit=2;
         }
         if(num7==5&&suit7==3){
             CurentCard.setText("5 of Hearts");
+            GameSuit=3;
         }
         if(num7==5&&suit7==4){
             CurentCard.setText("5 of Clubs");
+            GameSuit=4;
         }
         
         if(num7==6&&suit7==1){
             CurentCard.setText("6 of Spades");
+            GameSuit=1;
         }
         if(num7==6&&suit7==2){
             CurentCard.setText("6 of Dimonds");
+            GameSuit=2;
         }
         if(num7==6&&suit7==3){
             CurentCard.setText("6 of Hearts");
+            GameSuit=3;
         }
         if(num7==6&&suit7==4){
             CurentCard.setText("6 of Clubs");
+            GameSuit=4;
         }
         
         if(num7==7&&suit7==1){
             CurentCard.setText("7 of Spades");
+            GameSuit=1;
         }
         if(num7==7&&suit7==2){
             CurentCard.setText("7 of Dimonds");
+            GameSuit=2;
         }
         if(num7==7&&suit7==3){
             CurentCard.setText("7 of Hearts");
+            GameSuit=3;
         }
         if(num7==7&&suit7==4){
             CurentCard.setText("7 of Clubs");
+            GameSuit=4;
         }
         
         if(num7==8&&suit7==1){
             CurentCard.setText("8 of Spades");
+            GameSuit=1;
         }
         if(num7==8&&suit7==2){
             CurentCard.setText("8 of Dimonds");
+            GameSuit=2;
         }
         if(num7==8&&suit7==3){
             CurentCard.setText("8 of Hearts");
+            GameSuit=3;
         }
         if(num7==8&&suit7==4){
             CurentCard.setText("8 of Clubs");
+            GameSuit=4;
         }
         
         if(num7==9&&suit7==1){
             CurentCard.setText("9 of Spades");
+            GameSuit=1;
         }
         if(num7==9&&suit7==2){
             CurentCard.setText("9 of Dimonds");
+            GameSuit=2;
         }
         if(num7==9&&suit7==3){
             CurentCard.setText("9 of Hearts");
+            GameSuit=3;
+            
         }
         if(num7==9&&suit7==4){
             CurentCard.setText("9 of Clubs");
+            GameSuit=4;
         }
         
         if(num7==10&&suit7==1){
             CurentCard.setText("10 of Spades");
+            GameSuit=1;
         }
         if(num7==10&&suit7==2){
             CurentCard.setText("10 of Dimonds");
+            GameSuit=2;
         }
         if(num7==10&&suit7==3){
             CurentCard.setText("10 of Hearts");
+            GameSuit=3;
         }
         if(num7==10&&suit7==4){
             CurentCard.setText("10 of Clubs");
+            GameSuit=4;
         }
         
         if(num7==11&&suit7==1){
             CurentCard.setText("Jack of Spades");
+            GameSuit=1;
         }
         if(num7==11&&suit7==2){
             CurentCard.setText("Jack of Dimonds");
+            GameSuit=2;
         }
         if(num7==11&&suit7==3){
             CurentCard.setText("Jack of Hearts");
+            GameSuit=3;
         }
         if(num7==11&&suit7==4){
             CurentCard.setText("Jack of Clubs");
+            GameSuit=4;
         }
         
         if(num7==12&&suit7==1){
             CurentCard.setText("Queen of Spades");
+            GameSuit=1;
         }
         if(num7==12&&suit7==2){
             CurentCard.setText("Queen of Dimonds");
+            GameSuit=2;
         }
         if(num7==12&&suit7==3){
             CurentCard.setText("Queen of Hearts");
+            GameSuit=3;
         }
         if(num7==12&&suit7==4){
             CurentCard.setText("Queen of Clubs");
+            GameSuit=4;
         }
         
         if(num7==13&&suit7==1){
             CurentCard.setText("King of Spades");
+            GameSuit=1;
         }
         if(num7==13&&suit7==2){
             CurentCard.setText("King of Dimonds");
+            GameSuit=2;
         }
         if(num7==13&&suit7==3){
             CurentCard.setText("King of Hearts");
+            GameSuit=3;
         }
         if(num7==13&&suit7==4){
             CurentCard.setText("King of Clubs");
+            GameSuit=4;
         }
+        z=1;
+        NotUTurn.setText("it is Julia's turn");
+        }
+     }
+        if(y!=0){
+           NotUTurn.setText("it is not your turn");
+       }
     }//GEN-LAST:event_PlayCard7ActionPerformed
 
-    private void PlayCard8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayCard8ActionPerformed
-        
-        Playercard8.setText("you don't have this card");
-        
-        x8=0;
-        
-        if(num8==1&&suit8==1){
-            CurentCard.setText("ace of Spades");
-        }
-        if(num8==1&&suit8==2){
-            CurentCard.setText("ace of Dimonds");
-        }
-        if(num8==1&&suit8==3){
-            CurentCard.setText("ace of Hearts");
-        }
-        if(num8==2&&suit8==4){
-            CurentCard.setText("ace of Clubs");
-        }
-        
-        if(num8==2&&suit8==1){
-            CurentCard.setText("2 of Spades");
-        }
-        if(num8==2&&suit8==2){
-            CurentCard.setText("2 of Dimonds");
-        }
-        if(num8==2&&suit8==3){
-            CurentCard.setText("2 of Hearts");
-        }
-        if(num8==2&&suit8==4){
-            CurentCard.setText("2 of Clubs"); 
-        }
-        
-         if(num8==3&&suit8==1){
-            CurentCard.setText("3 of Spades");
-        }
-        if(num8==3&&suit8==2){
-            CurentCard.setText("3 of Dimonds");
-        }
-        if(num8==3&&suit8==3){
-            CurentCard.setText("3 of Hearts");
-        }
-        if(num8==3&&suit8==4){
-            CurentCard.setText("3 of Clubs");
-        }
-        
-         if(num8==4&&suit8==1){
-            CurentCard.setText("4 of Spades");
-        }
-        if(num8==4&&suit8==2){
-            CurentCard.setText("4 of Dimonds");
-        }
-        if(num8==4&&suit8==3){
-            CurentCard.setText("4 of Hearts");
-        }
-        if(num8==4&&suit8==4){
-            CurentCard.setText("4 of Clubs");
-        }
-        
-        if(num8==5&&suit8==1){
-            CurentCard.setText("5 of Spades");
-        }
-        if(num8==5&&suit8==2){
-            CurentCard.setText("5 of Dimonds");
-        }
-        if(num8==5&&suit8==3){
-            CurentCard.setText("5 of Hearts");
-        }
-        if(num8==5&&suit8==4){
-            CurentCard.setText("5 of Clubs");
-        }
-        
-        if(num8==6&&suit8==1){
-            CurentCard.setText("6 of Spades");
-        }
-        if(num8==6&&suit8==2){
-            CurentCard.setText("6 of Dimonds");
-        }
-        if(num8==6&&suit8==3){
-            CurentCard.setText("6 of Hearts");
-        }
-        if(num8==6&&suit8==4){
-            CurentCard.setText("6 of Clubs");
-        }
-        
-        if(num8==7&&suit8==1){
-            CurentCard.setText("7 of Spades");
-        }
-        if(num8==7&&suit8==2){
-            CurentCard.setText("7 of Dimonds");
-        }
-        if(num8==7&&suit8==3){
-            CurentCard.setText("7 of Hearts");
-        }
-        if(num8==7&&suit8==4){
-            CurentCard.setText("7 of Clubs");
-        }
-        
-        if(num8==8&&suit8==1){
-            CurentCard.setText("8 of Spades");
-        }
-        if(num8==8&&suit8==2){
-            CurentCard.setText("8 of Dimonds");
-        }
-        if(num8==8&&suit8==3){
-            CurentCard.setText("8 of Hearts");
-        }
-        if(num8==8&&suit8==4){
-            CurentCard.setText("8 of Clubs");
-        }
-        
-        if(num8==9&&suit8==1){
-            CurentCard.setText("9 of Spades");
-        }
-        if(num8==9&&suit8==2){
-            CurentCard.setText("9 of Dimonds");
-        }
-        if(num8==9&&suit8==3){
-            CurentCard.setText("9 of Hearts");
-        }
-        if(num8==9&&suit8==4){
-            CurentCard.setText("9 of Clubs");
-        }
-        
-        if(num8==10&&suit8==1){
-            CurentCard.setText("10 of Spades");
-        }
-        if(num8==10&&suit8==2){
-            CurentCard.setText("10 of Dimonds");
-        }
-        if(num8==10&&suit8==3){
-            CurentCard.setText("10 of Hearts");
-        }
-        if(num8==10&&suit8==4){
-            CurentCard.setText("10 of Clubs");
-        }
-        
-        if(num8==11&&suit8==1){
-            CurentCard.setText("Jack of Spades");
-        }
-        if(num8==11&&suit8==2){
-            CurentCard.setText("Jack of Dimonds");
-        }
-        if(num8==11&&suit8==3){
-            CurentCard.setText("Jack of Hearts");
-        }
-        if(num8==11&&suit8==4){
-            CurentCard.setText("Jack of Clubs");
-        }
-        
-        if(num8==12&&suit8==1){
-            CurentCard.setText("Queen of Spades");
-        }
-        if(num8==12&&suit8==2){
-            CurentCard.setText("Queen of Dimonds");
-        }
-        if(num8==12&&suit8==3){
-            CurentCard.setText("Queen of Hearts");
-        }
-        if(num8==12&&suit8==4){
-            CurentCard.setText("Queen of Clubs");
-        }
-        
-        if(num8==13&&suit8==1){
-            CurentCard.setText("King of Spades");
-        }
-        if(num8==13&&suit8==2){
-            CurentCard.setText("King of Dimonds");
-        }
-        if(num8==13&&suit8==3){
-            CurentCard.setText("King of Hearts");
-        }
-        if(num8==13&&suit8==4){
-            CurentCard.setText("King of Clubs");
-        }    }//GEN-LAST:event_PlayCard8ActionPerformed
-
     private void PlayCard4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayCard4ActionPerformed
-        Playercard4.setText("you don't have this card");
-        
+                
         x4=0;
-        
+        if(GameSuit==suit4){
+        if(z==2&&y==0){
+        Playercard4.setText("you don't have this card");
         if(num4==1&&suit4==1){
             CurentCard.setText("ace of Spades");
+            GameSuit=1;
         }
         if(num4==1&&suit4==2){
             CurentCard.setText("ace of Dimonds");
+            GameSuit=2;
         }
         if(num4==1&&suit4==3){
             CurentCard.setText("ace of Hearts");
+            GameSuit=3;
         }
         if(num4==2&&suit4==4){
             CurentCard.setText("ace of Clubs");
+            GameSuit=4;
         }
         
         if(num4==2&&suit4==1){
             CurentCard.setText("2 of Spades");
+            GameSuit=1;
         }
         if(num4==2&&suit4==2){
             CurentCard.setText("2 of Dimonds");
+            GameSuit=2;
         }
         if(num4==2&&suit4==3){
             CurentCard.setText("2 of Hearts");
+            GameSuit=3;
         }
         if(num4==2&&suit4==4){
             CurentCard.setText("2 of Clubs"); 
+            GameSuit=4;
         }
         
          if(num4==3&&suit4==1){
             CurentCard.setText("3 of Spades");
+            GameSuit=1;
         }
         if(num4==3&&suit4==2){
             CurentCard.setText("3 of Dimonds");
+            GameSuit=2;
         }
         if(num4==3&&suit4==3){
             CurentCard.setText("3 of Hearts");
+            GameSuit=3;
         }
         if(num4==3&&suit4==4){
             CurentCard.setText("3 of Clubs");
+            GameSuit=4;
         }
         
          if(num4==4&&suit4==1){
             CurentCard.setText("4 of Spades");
-        }
+           GameSuit=1;
+         }
         if(num4==4&&suit4==2){
             CurentCard.setText("4 of Dimonds");
+            GameSuit=2;
         }
         if(num4==4&&suit4==3){
             CurentCard.setText("4 of Hearts");
+            GameSuit=3;
         }
         if(num4==3&&suit4==4){
             CurentCard.setText("4 of Clubs");
+            GameSuit=4;
         }
         
         if(num4==5&&suit4==1){
             CurentCard.setText("5 of Spades");
+            GameSuit=1;
         }
         if(num4==5&&suit4==2){
             CurentCard.setText("5 of Dimonds");
+            GameSuit=2;
         }
         if(num4==5&&suit4==3){
             CurentCard.setText("5 of Hearts");
+            GameSuit=3;
         }
         if(num4==5&&suit4==4){
             CurentCard.setText("5 of Clubs");
+            GameSuit=4;
         }
         
         if(num4==6&&suit4==1){
             CurentCard.setText("6 of Spades");
+            GameSuit=1;
         }
         if(num4==6&&suit4==2){
             CurentCard.setText("6 of Dimonds");
+            GameSuit=2;
         }
         if(num4==6&&suit4==3){
             CurentCard.setText("6 of Hearts");
+            GameSuit=3;
         }
         if(num4==6&&suit4==4){
             CurentCard.setText("6 of Clubs");
+            GameSuit=4;
         }
         
         if(num4==7&&suit4==1){
             CurentCard.setText("7 of Spades");
+            GameSuit=1;
         }
         if(num4==7&&suit4==2){
             CurentCard.setText("7 of Dimonds");
+            GameSuit=2;
         }
         if(num4==7&&suit4==3){
             CurentCard.setText("7 of Hearts");
+            GameSuit=3;
         }
         if(num4==7&&suit4==4){
             CurentCard.setText("7 of Clubs");
+            GameSuit=4;
         }
         
         if(num4==8&&suit4==1){
             CurentCard.setText("8 of Spades");
+            GameSuit=1;
         }
         if(num4==8&&suit4==2){
             CurentCard.setText("8 of Dimonds");
+            GameSuit=2;
         }
         if(num4==8&&suit4==3){
             CurentCard.setText("8 of Hearts");
+            GameSuit=3;
         }
         if(num4==8&&suit3==4){
             CurentCard.setText("8 of Clubs");
+            GameSuit=4;
         }
         
         if(num4==9&&suit4==1){
             CurentCard.setText("9 of Spades");
+            GameSuit=1;
         }
         if(num4==9&&suit4==2){
             CurentCard.setText("9 of Dimonds");
+            GameSuit=2;
         }
         if(num4==9&&suit4==3){
             CurentCard.setText("9 of Hearts");
+            GameSuit=3;
         }
         if(num4==9&&suit4==4){
             CurentCard.setText("9 of Clubs");
+            GameSuit=4;
         }
         
         if(num4==10&&suit4==1){
             CurentCard.setText("10 of Spades");
+            GameSuit=1;
         }
         if(num4==10&&suit4==2){
             CurentCard.setText("10 of Dimonds");
+            GameSuit=2;
         }
         if(num4==10&&suit4==3){
             CurentCard.setText("10 of Hearts");
+            GameSuit=3;
         }
         if(num4==10&&suit4==4){
             CurentCard.setText("10 of Clubs");
+            GameSuit=4;
         }
         
         if(num4==11&&suit4==1){
             CurentCard.setText("Jack of Spades");
+            GameSuit=1;
         }
         if(num4==11&&suit4==2){
             CurentCard.setText("Jack of Dimonds");
+            GameSuit=2;
         }
         if(num4==11&&suit4==3){
             CurentCard.setText("Jack of Hearts");
+            GameSuit=3;
         }
         if(num4==11&&suit4==4){
             CurentCard.setText("Jack of Clubs");
+            GameSuit=4;
         }
         
         if(num4==12&&suit4==1){
             CurentCard.setText("Queen of Spades");
+            GameSuit=1;
         }
         if(num4==12&&suit4==2){
             CurentCard.setText("Queen of Dimonds");
+            GameSuit=2;
         }
         if(num4==12&&suit4==3){
             CurentCard.setText("Queen of Hearts");
+            GameSuit=3;
         }
         if(num4==12&&suit4==4){
             CurentCard.setText("Queen of Clubs");
+            GameSuit=4;
         }
         
         if(num4==13&&suit4==1){
             CurentCard.setText("King of Spades");
+            GameSuit=1;
         }
         if(num4==13&&suit4==2){
             CurentCard.setText("King of Dimonds");
+            GameSuit=2;
         }
         if(num4==13&&suit4==3){
             CurentCard.setText("King of Hearts");
+            GameSuit=3;
         }
         if(num4==13&&suit4==4){
             CurentCard.setText("King of Clubs");
+            GameSuit=4;
+        }
+        z=1;
+        NotUTurn.setText("it is Julia's turn");
+    }
+        if(y!=0){
+           NotUTurn.setText("it is not your turn");
+       }
         }
     }//GEN-LAST:event_PlayCard4ActionPerformed
 
     private void PlayCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayCard3ActionPerformed
-        Playercard3.setText("you don't have this card");
-        
+
         x3=0;
+        if(GameSuit==suit3){
+        if(z==2&&y==0){
+        Playercard3.setText("you don't have this card");
+        if(num3==1&&suit3==1){
+            CurentCard.setText("ace of Spades");
+            GameSuit=1;
+        }
+        if(num3==1&&suit3==2){
+            CurentCard.setText("ace of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==1&&suit3==3){
+            CurentCard.setText("ace of Hearts");
+            GameSuit=3;
+        }
+        if(num3==2&&suit3==4){
+            CurentCard.setText("ace of Clubs");
+            GameSuit=4;
+        }
         
+        if(num3==2&&suit3==1){
+            CurentCard.setText("2 of Spades");
+            GameSuit=1;
+        }
+        if(num3==2&&suit3==2){
+            CurentCard.setText("2 of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==2&&suit3==3){
+            CurentCard.setText("2 of Hearts");
+            GameSuit=3;
+        }
+        if(num3==2&&suit3==4){
+            CurentCard.setText("2 of Clubs"); 
+            GameSuit=4;
+        }
+        
+         if(num3==3&&suit3==1){
+            CurentCard.setText("3 of Spades");
+            GameSuit=1;
+        }
+        if(num3==3&&suit3==2){
+            CurentCard.setText("3 of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==3&&suit3==3){
+            CurentCard.setText("3 of Hearts");
+            GameSuit=3;
+        }
+        if(num3==3&&suit3==4){
+            CurentCard.setText("3 of Clubs");
+            GameSuit=4;
+        }
+        
+         if(num3==4&&suit3==1){
+            CurentCard.setText("4 of Spades");
+            GameSuit=1;
+        }
+        if(num3==4&&suit3==2){
+            CurentCard.setText("4 of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==4&&suit3==3){
+            CurentCard.setText("4 of Hearts");
+            GameSuit=3;
+        }
+        if(num3==3&&suit3==4){
+            CurentCard.setText("4 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num3==5&&suit3==1){
+            CurentCard.setText("5 of Spades");
+            GameSuit=1;
+        }
+        if(num3==5&&suit3==2){
+            CurentCard.setText("5 of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==5&&suit3==3){
+            CurentCard.setText("5 of Hearts");
+            GameSuit=3;
+        }
+        if(num3==5&&suit3==4){
+            CurentCard.setText("5 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num3==6&&suit3==1){
+            CurentCard.setText("6 of Spades");
+            GameSuit=1;
+        }
+        if(num3==6&&suit3==2){
+            CurentCard.setText("6 of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==6&&suit3==3){
+            CurentCard.setText("6 of Hearts");
+            GameSuit=3;
+        }
+        if(num3==6&&suit3==4){
+            CurentCard.setText("6 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num3==7&&suit3==1){
+            CurentCard.setText("7 of Spades");
+            GameSuit=1;
+        }
+        if(num3==7&&suit3==2){
+            CurentCard.setText("7 of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==7&&suit3==3){
+            CurentCard.setText("7 of Hearts");
+            GameSuit=3;
+        }
+        if(num3==7&&suit3==4){
+            CurentCard.setText("7 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num3==8&&suit3==1){
+            CurentCard.setText("8 of Spades");
+            GameSuit=1;
+        }
+        if(num3==8&&suit3==2){
+            CurentCard.setText("8 of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==8&&suit3==3){
+            CurentCard.setText("8 of Hearts");
+            GameSuit=3;
+        }
+        if(num3==8&&suit3==4){
+            CurentCard.setText("8 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num3==9&&suit3==1){
+            CurentCard.setText("9 of Spades");
+            GameSuit=1;
+        }
+        if(num3==9&&suit3==2){
+            CurentCard.setText("9 of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==9&&suit3==3){
+            CurentCard.setText("9 of Hearts");
+            GameSuit=3;
+        }
+        if(num3==9&&suit3==4){
+            CurentCard.setText("9 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num3==10&&suit3==1){
+            CurentCard.setText("10 of Spades");
+            GameSuit=1;
+        }
+        if(num3==10&&suit3==2){
+            CurentCard.setText("10 of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==10&&suit3==3){
+            CurentCard.setText("10 of Hearts");
+            GameSuit=3;
+        }
+        if(num3==10&&suit3==4){
+            CurentCard.setText("10 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num3==11&&suit3==1){
+            CurentCard.setText("Jack of Spades");
+            GameSuit=1;
+        }
+        if(num3==11&&suit3==2){
+            CurentCard.setText("Jack of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==11&&suit3==3){
+            CurentCard.setText("Jack of Hearts");
+            GameSuit=3;
+        }
+        if(num3==11&&suit3==4){
+            CurentCard.setText("Jack of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num3==12&&suit3==1){
+            CurentCard.setText("Queen of Spades");
+            GameSuit=1;
+        }
+        if(num3==12&&suit3==2){
+            CurentCard.setText("Queen of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==12&&suit3==3){
+            CurentCard.setText("Queen of Hearts");
+            GameSuit=3;
+        }
+        if(num3==12&&suit3==4){
+            CurentCard.setText("Queen of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num3==13&&suit3==1){
+            CurentCard.setText("King of Spades");
+            GameSuit=1;
+        }
+        if(num3==13&&suit3==2){
+            CurentCard.setText("King of Dimonds");
+            GameSuit=2;
+        }
+        if(num3==13&&suit3==3){
+            CurentCard.setText("King of Hearts");
+            GameSuit=3;
+        }
+        if(num3==13&&suit3==4){
+            CurentCard.setText("King of Clubs");
+            GameSuit=4;
+        }
+        NotUTurn.setText("it is Julia's turn");
+        z=1;
+        }
+      if(y!=0){
+           NotUTurn.setText("it is not your turn");
+       }
+        }
+    
+    }//GEN-LAST:event_PlayCard3ActionPerformed
+
+    private void NextPlayerTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextPlayerTurnActionPerformed
+       NotUTurn.setVisible(true);
+           System.out.println(z);
+           if (z==6){
+                num3=(int)(Math.random()*13+1);
+        suit3=(int)(Math.random()*4+1);
+               
+                    if(num3==1&&suit3==1){
+            CurentCard.setText("ace of Spades");
+        }
+        if(num3==1&&suit3==2){
+            CurentCard.setText("ace of Dimonds");
+        }
+        if(num3==1&&suit3==3){
+            CurentCard.setText("ace of Hearts");
+        }
+        if(num3==2&&suit3==4){
+            CurentCard.setText("ace of Clubs");
+        }
+        
+        if(num3==2&&suit3==1){
+            CurentCard.setText("2 of Spades");
+        }
+        if(num3==2&&suit3==2){
+            CurentCard.setText("2 of Dimonds");
+        }
+        if(num3==2&&suit3==3){
+            CurentCard.setText("2 of Hearts");
+        }
+        if(num3==2&&suit3==4){
+            CurentCard.setText("2 of Clubs"); 
+        }
+        
+         if(num3==3&&suit3==1){
+            CurentCard.setText("3 of Spades");
+        }
+        if(num3==3&&suit3==2){
+            CurentCard.setText("3 of Dimonds");
+        }
+        if(num3==3&&suit3==3){
+            CurentCard.setText("3 of Hearts");
+        }
+        if(num3==3&&suit3==4){
+            CurentCard.setText("3 of Clubs");
+        }
+        
+         if(num3==4&&suit3==1){
+            CurentCard.setText("4 of Spades");
+        }
+        if(num3==4&&suit3==2){
+            CurentCard.setText("4 of Dimonds");
+        }
+        if(num3==4&&suit3==3){
+            CurentCard.setText("4 of Hearts");
+        }
+        if(num3==3&&suit3==4){
+            CurentCard.setText("4 of Clubs");
+        }
+        
+        if(num3==5&&suit3==1){
+            CurentCard.setText("5 of Spades");
+        }
+        if(num3==5&&suit3==2){
+            CurentCard.setText("5 of Dimonds");
+        }
+        if(num3==5&&suit3==3){
+            CurentCard.setText("5 of Hearts");
+        }
+        if(num3==5&&suit3==4){
+            CurentCard.setText("5 of Clubs");
+        }
+        
+        if(num3==6&&suit3==1){
+            CurentCard.setText("6 of Spades");
+        }
+        if(num3==6&&suit3==2){
+            CurentCard.setText("6 of Dimonds");
+        }
+        if(num3==6&&suit3==3){
+            CurentCard.setText("6 of Hearts");
+        }
+        if(num3==6&&suit3==4){
+            CurentCard.setText("6 of Clubs");
+        }
+        
+        if(num3==7&&suit3==1){
+            CurentCard.setText("7 of Spades");
+        }
+        if(num3==7&&suit3==2){
+            CurentCard.setText("7 of Dimonds");
+        }
+        if(num3==7&&suit3==3){
+            CurentCard.setText("7 of Hearts");
+        }
+        if(num3==7&&suit3==4){
+            CurentCard.setText("7 of Clubs");
+        }
+        
+        if(num3==8&&suit3==1){
+            CurentCard.setText("8 of Spades");
+        }
+        if(num3==8&&suit3==2){
+            CurentCard.setText("8 of Dimonds");
+        }
+        if(num3==8&&suit3==3){
+            CurentCard.setText("8 of Hearts");
+        }
+        if(num3==8&&suit3==4){
+            CurentCard.setText("8 of Clubs");
+        }
+        
+        if(num3==9&&suit3==1){
+            CurentCard.setText("9 of Spades");
+        }
+        if(num3==9&&suit3==2){
+            CurentCard.setText("9 of Dimonds");
+        }
+        if(num3==9&&suit3==3){
+            CurentCard.setText("9 of Hearts");
+        }
+        if(num3==9&&suit3==4){
+            CurentCard.setText("9 of Clubs");
+        }
+        
+        if(num3==10&&suit3==1){
+            CurentCard.setText("10 of Spades");
+        }
+        if(num3==10&&suit3==2){
+            CurentCard.setText("10 of Dimonds");
+        }
+        if(num3==10&&suit3==3){
+            CurentCard.setText("10 of Hearts");
+        }
+        if(num3==10&&suit3==4){
+            CurentCard.setText("10 of Clubs");
+        }
+        
+        if(num3==11&&suit3==1){
+            CurentCard.setText("Jack of Spades");
+        }
+        if(num3==11&&suit3==2){
+            CurentCard.setText("Jack of Dimonds");
+        }
+        if(num3==11&&suit3==3){
+            CurentCard.setText("Jack of Hearts");
+        }
+        if(num3==11&&suit3==4){
+            CurentCard.setText("Jack of Clubs");
+        }
+        
+        if(num3==12&&suit3==1){
+            CurentCard.setText("Queen of Spades");
+        }
+        if(num3==12&&suit3==2){
+            CurentCard.setText("Queen of Dimonds");
+        }
+        if(num3==12&&suit3==3){
+            CurentCard.setText("Queen of Hearts");
+        }
+        if(num3==12&&suit3==4){
+            CurentCard.setText("Queen of Clubs");
+        }
+        
+        if(num3==13&&suit3==1){
+            CurentCard.setText("King of Spades");
+        }
+        if(num3==13&&suit3==2){
+            CurentCard.setText("King of Dimonds");
+        }
+        if(num3==13&&suit3==3){
+            CurentCard.setText("King of Hearts");
+        }
+        if(num3==13&&suit3==4){
+            CurentCard.setText("King of Clubs");
+        }
+        NotUTurn.setText("it is Your turn");
+         z=2;
+           }
+           
+           if(z==4){
+                 num3=(int)(Math.random()*13+1);
+        suit3=(int)(Math.random()*4+1);
+        z=2;
         if(num3==1&&suit3==1){
             CurentCard.setText("ace of Spades");
         }
@@ -3618,7 +4477,424 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         if(num3==13&&suit3==4){
             CurentCard.setText("King of Clubs");
         }
-    }//GEN-LAST:event_PlayCard3ActionPerformed
+        z=6;
+          NotUTurn.setText("it is Antons Turn");
+               System.out.println("why won't this work");
+           }
+           if(z==1){
+         num3=(int)(Math.random()*13+1);
+        suit3=(int)(Math.random()*4+1);
+               
+                    if(num3==1&&suit3==1){
+            CurentCard.setText("ace of Spades");
+        }
+        if(num3==1&&suit3==2){
+            CurentCard.setText("ace of Dimonds");
+        }
+        if(num3==1&&suit3==3){
+            CurentCard.setText("ace of Hearts");
+        }
+        if(num3==2&&suit3==4){
+            CurentCard.setText("ace of Clubs");
+        }
+        
+        if(num3==2&&suit3==1){
+            CurentCard.setText("2 of Spades");
+        }
+        if(num3==2&&suit3==2){
+            CurentCard.setText("2 of Dimonds");
+        }
+        if(num3==2&&suit3==3){
+            CurentCard.setText("2 of Hearts");
+        }
+        if(num3==2&&suit3==4){
+            CurentCard.setText("2 of Clubs"); 
+        }
+        
+         if(num3==3&&suit3==1){
+            CurentCard.setText("3 of Spades");
+        }
+        if(num3==3&&suit3==2){
+            CurentCard.setText("3 of Dimonds");
+        }
+        if(num3==3&&suit3==3){
+            CurentCard.setText("3 of Hearts");
+        }
+        if(num3==3&&suit3==4){
+            CurentCard.setText("3 of Clubs");
+        }
+        
+         if(num3==4&&suit3==1){
+            CurentCard.setText("4 of Spades");
+        }
+        if(num3==4&&suit3==2){
+            CurentCard.setText("4 of Dimonds");
+        }
+        if(num3==4&&suit3==3){
+            CurentCard.setText("4 of Hearts");
+        }
+        if(num3==3&&suit3==4){
+            CurentCard.setText("4 of Clubs");
+        }
+        
+        if(num3==5&&suit3==1){
+            CurentCard.setText("5 of Spades");
+        }
+        if(num3==5&&suit3==2){
+            CurentCard.setText("5 of Dimonds");
+        }
+        if(num3==5&&suit3==3){
+            CurentCard.setText("5 of Hearts");
+        }
+        if(num3==5&&suit3==4){
+            CurentCard.setText("5 of Clubs");
+        }
+        
+        if(num3==6&&suit3==1){
+            CurentCard.setText("6 of Spades");
+        }
+        if(num3==6&&suit3==2){
+            CurentCard.setText("6 of Dimonds");
+        }
+        if(num3==6&&suit3==3){
+            CurentCard.setText("6 of Hearts");
+        }
+        if(num3==6&&suit3==4){
+            CurentCard.setText("6 of Clubs");
+        }
+        
+        if(num3==7&&suit3==1){
+            CurentCard.setText("7 of Spades");
+        }
+        if(num3==7&&suit3==2){
+            CurentCard.setText("7 of Dimonds");
+        }
+        if(num3==7&&suit3==3){
+            CurentCard.setText("7 of Hearts");
+        }
+        if(num3==7&&suit3==4){
+            CurentCard.setText("7 of Clubs");
+        }
+        
+        if(num3==8&&suit3==1){
+            CurentCard.setText("8 of Spades");
+        }
+        if(num3==8&&suit3==2){
+            CurentCard.setText("8 of Dimonds");
+        }
+        if(num3==8&&suit3==3){
+            CurentCard.setText("8 of Hearts");
+        }
+        if(num3==8&&suit3==4){
+            CurentCard.setText("8 of Clubs");
+        }
+        
+        if(num3==9&&suit3==1){
+            CurentCard.setText("9 of Spades");
+        }
+        if(num3==9&&suit3==2){
+            CurentCard.setText("9 of Dimonds");
+        }
+        if(num3==9&&suit3==3){
+            CurentCard.setText("9 of Hearts");
+        }
+        if(num3==9&&suit3==4){
+            CurentCard.setText("9 of Clubs");
+        }
+        
+        if(num3==10&&suit3==1){
+            CurentCard.setText("10 of Spades");
+        }
+        if(num3==10&&suit3==2){
+            CurentCard.setText("10 of Dimonds");
+        }
+        if(num3==10&&suit3==3){
+            CurentCard.setText("10 of Hearts");
+        }
+        if(num3==10&&suit3==4){
+            CurentCard.setText("10 of Clubs");
+        }
+        
+        if(num3==11&&suit3==1){
+            CurentCard.setText("Jack of Spades");
+        }
+        if(num3==11&&suit3==2){
+            CurentCard.setText("Jack of Dimonds");
+        }
+        if(num3==11&&suit3==3){
+            CurentCard.setText("Jack of Hearts");
+        }
+        if(num3==11&&suit3==4){
+            CurentCard.setText("Jack of Clubs");
+        }
+        
+        if(num3==12&&suit3==1){
+            CurentCard.setText("Queen of Spades");
+        }
+        if(num3==12&&suit3==2){
+            CurentCard.setText("Queen of Dimonds");
+        }
+        if(num3==12&&suit3==3){
+            CurentCard.setText("Queen of Hearts");
+        }
+        if(num3==12&&suit3==4){
+            CurentCard.setText("Queen of Clubs");
+        }
+        
+        if(num3==13&&suit3==1){
+            CurentCard.setText("King of Spades");
+        }
+        if(num3==13&&suit3==2){
+            CurentCard.setText("King of Dimonds");
+        }
+        if(num3==13&&suit3==3){
+            CurentCard.setText("King of Hearts");
+        }
+        if(num3==13&&suit3==4){
+            CurentCard.setText("King of Clubs");
+        }
+        NotUTurn.setText("it is Frank's Turn");
+        z=4;
+               System.out.println("is this working");
+               System.out.println(z);
+}
+          
+    }//GEN-LAST:event_NextPlayerTurnActionPerformed
+
+    private void PlayerCard8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayerCard8ActionPerformed
+
+        x8=0;
+        if(GameSuit==suit8){
+        if(z==2&&y==0){
+        Playercard8.setText("you don't have this card");
+        if(num8==1&&suit8==1){
+            CurentCard.setText("ace of Spades");
+            GameSuit=1;
+        }
+        if(num8==1&&suit8==2){
+            CurentCard.setText("ace of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==1&&suit8==3){
+            CurentCard.setText("ace of Hearts");
+            GameSuit=3;
+        }
+        if(num8==2&&suit8==4){
+            CurentCard.setText("ace of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num8==2&&suit8==1){
+            CurentCard.setText("2 of Spades");
+            GameSuit=1;
+        }
+        if(num8==2&&suit8==2){
+            CurentCard.setText("2 of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==2&&suit8==3){
+            CurentCard.setText("2 of Hearts");
+            GameSuit=3;
+        }
+        if(num8==2&&suit8==4){
+            CurentCard.setText("2 of Clubs"); 
+            GameSuit=4;
+        }
+        
+         if(num8==3&&suit8==1){
+            CurentCard.setText("3 of Spades");
+            GameSuit=1;
+        }
+        if(num8==3&&suit8==2){
+            CurentCard.setText("3 of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==3&&suit8==3){
+            CurentCard.setText("3 of Hearts");
+            GameSuit=3;
+        }
+        if(num8==3&&suit8==4){
+            CurentCard.setText("3 of Clubs");
+            GameSuit=4;
+        }
+        
+         if(num8==4&&suit8==1){
+            CurentCard.setText("4 of Spades");
+            GameSuit=1;
+        }
+        if(num8==4&&suit8==2){
+            CurentCard.setText("4 of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==4&&suit8==3){
+            CurentCard.setText("4 of Hearts");
+            GameSuit=3;
+        }
+        if(num8==4&&suit8==4){
+            CurentCard.setText("4 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num8==5&&suit8==1){
+            CurentCard.setText("5 of Spades");
+            GameSuit=1;
+        }
+        if(num8==5&&suit8==2){
+            CurentCard.setText("5 of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==5&&suit8==3){
+            CurentCard.setText("5 of Hearts");
+            GameSuit=3;
+        }
+        if(num8==5&&suit8==4){
+            CurentCard.setText("5 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num8==6&&suit8==1){
+            CurentCard.setText("6 of Spades");
+            GameSuit=1;
+        }
+        if(num8==6&&suit8==2){
+            CurentCard.setText("6 of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==6&&suit8==3){
+            CurentCard.setText("6 of Hearts");
+            GameSuit=3;
+        }
+        if(num8==6&&suit8==4){
+            CurentCard.setText("6 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num8==7&&suit8==1){
+            CurentCard.setText("7 of Spades");
+            GameSuit=1;
+        }
+        if(num8==7&&suit8==2){
+            CurentCard.setText("7 of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==7&&suit8==3){
+            CurentCard.setText("7 of Hearts");
+            GameSuit=3;
+        }
+        if(num8==7&&suit8==4){
+            CurentCard.setText("7 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num8==8&&suit8==1){
+            CurentCard.setText("8 of Spades");
+            GameSuit=1;
+        }
+        if(num8==8&&suit8==2){
+            CurentCard.setText("8 of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==8&&suit8==3){
+            CurentCard.setText("8 of Hearts");
+            GameSuit=3;
+        }
+        if(num8==8&&suit8==4){
+            CurentCard.setText("8 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num8==9&&suit8==1){
+            CurentCard.setText("9 of Spades");
+            GameSuit=1;
+        }
+        if(num8==9&&suit8==2){
+            CurentCard.setText("9 of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==9&&suit8==3){
+            CurentCard.setText("9 of Hearts");
+            GameSuit=3;
+        }
+        if(num8==9&&suit8==4){
+            CurentCard.setText("9 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num8==10&&suit8==1){
+            CurentCard.setText("10 of Spades");
+            GameSuit=1;
+        }
+        if(num8==10&&suit8==2){
+            CurentCard.setText("10 of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==10&&suit8==3){
+            CurentCard.setText("10 of Hearts");
+            GameSuit=3;
+        }
+        if(num8==10&&suit8==4){
+            CurentCard.setText("10 of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num8==11&&suit8==1){
+        CurentCard.setText("Jack of Spades");
+        GameSuit=1;
+        }
+        if(num8==11&&suit8==2){
+            CurentCard.setText("Jack of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==11&&suit8==3){
+            CurentCard.setText("Jack of Hearts");
+            GameSuit=3;
+        }
+        if(num8==11&&suit8==4){
+            CurentCard.setText("Jack of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num8==12&&suit8==1){
+            CurentCard.setText("Queen of Spades");
+            GameSuit=1;
+        }
+        if(num8==12&&suit8==2){
+            CurentCard.setText("Queen of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==12&&suit8==3){
+            CurentCard.setText("Queen of Hearts");
+            GameSuit=3;
+        }
+        if(num8==12&&suit8==4){
+            CurentCard.setText("Queen of Clubs");
+            GameSuit=4;
+        }
+        
+        if(num8==13&&suit8==1){
+            CurentCard.setText("King of Spades");
+            GameSuit=1;
+        }
+        if(num8==13&&suit8==2){
+            CurentCard.setText("King of Dimonds");
+            GameSuit=2;
+        }
+        if(num8==13&&suit8==3){
+            CurentCard.setText("King of Hearts");
+            GameSuit=3;
+        }
+        if(num8==13&&suit8==4){
+            CurentCard.setText("King of Clubs");   
+            GameSuit=4;
+        }
+        }
+        z=1;
+        NotUTurn.setText("it is Julia's turn");
+        }
+        if(y!=0){
+           NotUTurn.setText("it is not your turn");
+       }
+    }//GEN-LAST:event_PlayerCard8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3659,6 +4935,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
     private javax.swing.JLabel CurentCard;
     private javax.swing.JButton NewGame;
     private javax.swing.JMenuItem NewGame2;
+    private javax.swing.JButton NextPlayerTurn;
     private javax.swing.JLabel NoPickUp;
     private javax.swing.JLabel NotUTurn;
     private javax.swing.JLabel Opponent1;
@@ -3672,7 +4949,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
     private javax.swing.JButton PlayCard5;
     private javax.swing.JButton PlayCard6;
     private javax.swing.JButton PlayCard7;
-    private javax.swing.JButton PlayCard8;
+    private javax.swing.JButton PlayerCard8;
     private javax.swing.JLabel Playercard1;
     private javax.swing.JLabel Playercard2;
     private javax.swing.JLabel Playercard3;
@@ -3681,6 +4958,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
     private javax.swing.JLabel Playercard6;
     private javax.swing.JLabel Playercard7;
     private javax.swing.JLabel Playercard8;
+    private javax.swing.JLabel WrongSuit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
