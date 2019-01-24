@@ -368,11 +368,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="NoPickUp">
           <Properties>
-            <Property name="text" type="java.lang.String" value="You can&apos;t pick up "/>
+            <Property name="text" type="java.lang.String" value="You can&apos;t pick up Therefor you louse press new game"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="320" y="250" width="110" height="-1"/>
+              <AbsoluteConstraints x="240" y="240" width="260" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
