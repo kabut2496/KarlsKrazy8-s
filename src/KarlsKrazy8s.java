@@ -5,8 +5,9 @@
  */
 
 /**
- *
- * @author kabut2496
+ *25/01/2019
+ * Karl Butler
+ * for Mr.Kaune 
  */
 public class KarlsKrazy8s extends javax.swing.JFrame {
 
