@@ -16,6 +16,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
      */
     public KarlsKrazy8s() {
         initComponents();
+       this.setVisible(false);
        NotUTurn.setVisible(false);
        NoPickUp.setVisible(false);
        WrongSuit.setVisible(false);
@@ -34,7 +35,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
        a=0;
     }
  int GameNum,GameSuit,card1,card2,card3,card4,card5,card6,card7,card8,num,suit,num2,suit2,num3,suit3,num4,suit4,num5,suit5,suit6,num6,suit7,num7,num8,suit8,num9,suit9,playSuit,x1,x2,x3,x4,x5,x6,x7,x8,y,z,a;
-       
+     String name;  
 
  
 
@@ -51,7 +52,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         NewGame = new javax.swing.JButton();
         PickUpCard = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        YourHand = new javax.swing.JLabel();
         Playercard1 = new javax.swing.JLabel();
         PlayCard1 = new javax.swing.JButton();
         Playercard2 = new javax.swing.JLabel();
@@ -76,6 +77,8 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         NextPlayerTurn = new javax.swing.JButton();
         PlayerCard8 = new javax.swing.JButton();
         WrongSuit = new javax.swing.JLabel();
+        NameIn = new javax.swing.JTextField();
+        Enter = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -91,7 +94,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel1.setText("Loco cuatro's");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 10, -1, 35));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, 35));
 
         NewGame.setText("New game");
         NewGame.addActionListener(new java.awt.event.ActionListener() {
@@ -109,8 +112,8 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         });
         jPanel1.add(PickUpCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 174, -1, -1));
 
-        jLabel2.setText("Your Hand");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 51, -1, -1));
+        YourHand.setText("Your Hand");
+        jPanel1.add(YourHand, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 51, -1, -1));
 
         Playercard1.setText("You don't have this Card");
         jPanel1.add(Playercard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 73, 140, -1));
@@ -229,6 +232,22 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
         WrongSuit.setText("Wrong suit");
         jPanel1.add(WrongSuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 80, -1));
 
+        NameIn.setText("Enter Player's first name");
+        NameIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NameInActionPerformed(evt);
+            }
+        });
+        jPanel1.add(NameIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, -1));
+
+        Enter.setText("Enter");
+        Enter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnterActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Enter, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+
         jMenu1.setText("File");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
@@ -281,7 +300,7 @@ public class KarlsKrazy8s extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        System.exit(0);
+       
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 /**
  * play your 2nd card
@@ -5326,6 +5345,24 @@ System.out.println(GameSuit);
        }
     }//GEN-LAST:event_PlayerCard8ActionPerformed
 
+    private void EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterActionPerformed
+    name=NameIn.getText();
+    try{
+        if(name.contains(" ")){
+            throw new Exception();
+           
+        }else{
+             YourHand.setText(name+"'s hand");
+        }
+    }catch(Exception e){
+        System.err.println("Please enter your first name");
+    }
+    }//GEN-LAST:event_EnterActionPerformed
+
+    private void NameInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NameInActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -5363,6 +5400,8 @@ System.out.println(GameSuit);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CurentCard;
+    private javax.swing.JButton Enter;
+    private javax.swing.JTextField NameIn;
     private javax.swing.JButton NewGame;
     private javax.swing.JMenuItem NewGame2;
     private javax.swing.JButton NextPlayerTurn;
@@ -5389,8 +5428,8 @@ System.out.println(GameSuit);
     private javax.swing.JLabel Playercard7;
     private javax.swing.JLabel Playercard8;
     private javax.swing.JLabel WrongSuit;
+    private javax.swing.JLabel YourHand;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
